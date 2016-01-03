@@ -4,7 +4,7 @@ var async = require('async')
 var argv = require('minimist')(process.argv.slice(2))
 var fs = require('fs')
 var resolve = require('require-resolve')
-var ipfs = require('ipfs-api')('localhost', 5001)
+var cdump = require('cdump')
 var babel = require('babel-core')
 var p = require('path')
 var _ = require('lodash')
@@ -213,12 +213,12 @@ var transform = function (path, encountered, diskCache, cb) {
       console.log(PREAMBLE + res)
     }
 
-    ipfs.add(new Buffer(PREAMBLE + res), function (err, res) {
+    cdump.put(new Buffer(PREAMBLE + res), function (err, hash) {
       if (err) return cb(err)
-      debug(path, res[0].Hash)
-      memoTrans[path] = res[0].Hash
-      if (path.match('node_modules')) diskCache[path] = res[0].Hash
-      cb(null, res[0].Hash)
+      debug(path, hash)
+      memoTrans[path] = hash
+      if (path.match('node_modules')) diskCache[path] = hash
+      cb(null, hash)
     })
   })
 }
