@@ -1,6 +1,6 @@
 {
   "name": "exoform-bundle",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "the bundling logic for exoform",
   "main": "index.js",
   "scripts": {
@@ -21,8 +21,10 @@
     "falafel": "^1.2.0",
     "http-browserify": "^1.7.0",
     "https-browserify": "0.0.1",
+    "lodash": "^3.10.1",
     "minimist": "^1.2.0",
     "os-browserify": "^0.2.0",
+    "path": "^0.12.7",
     "require-resolve": "0.0.2",
     "stream": "0.0.2",
     "stream-sink": "^1.2.0",
